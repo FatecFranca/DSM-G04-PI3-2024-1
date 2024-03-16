@@ -20,7 +20,12 @@ function Login() {
         <label>Senha:</label>
         <input type="password" name="password" required />
 
-        <button type="submit">Login</button>
+        <div>
+         <Link to="/dashboard">
+            <button>Login</button>
+         </Link>
+        </div>
+      
       </form>
 
       <div>
@@ -29,12 +34,7 @@ function Login() {
       <div>
         <Link to="/signup">Cadastrar-se</Link>
       </div>
-      <div>
-        <Link to="/registrarabastecimento">Botão para testar registrarabastecimento</Link>
-      </div>
-      <div>
-        <Link to="/registarveiculo">Botão para testar RegistroVeiculo</Link>
-      </div>
+    
     </div>
   );
 }

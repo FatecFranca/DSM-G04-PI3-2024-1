@@ -28,10 +28,10 @@ function Login() {
       
       </form>
 
-      <div>
+      <div className="forgotPassord-Signup">
         <Link to="/forgot-password">Esqueceu sua senha?</Link>
       </div>
-      <div>
+      <div className="forgotPassord-Signup">
         <Link to="/signup">Cadastrar-se</Link>
       </div>
     

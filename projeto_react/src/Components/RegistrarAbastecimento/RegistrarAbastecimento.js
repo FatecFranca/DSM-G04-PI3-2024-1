@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//import axios from 'axios'; // Incluído para fazer requisições HTTP
 
 class AbastecimentoForm extends Component {
   constructor(props) {
@@ -11,9 +12,11 @@ class AbastecimentoForm extends Component {
       precoLitro: '',
       tipoCombustivel: 'Diesel',
       posto: '',
+      isLoading: false, // Estado para controle de loading
     };
   }
 
+  // Função para obter a data atual no formato DD/MM/YYYY
   getCurrentDate() {
     const today = new Date();
     const dd = String(today.getDate()).padStart(2, '0');
@@ -22,37 +25,54 @@ class AbastecimentoForm extends Component {
     return `${dd}/${mm}/${yyyy}`;
   }
 
+  // Manipula as mudanças nos inputs do formulário
   handleInputChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (e) => {
+  // Envia os dados do formulário ao servidor
+  handleSubmit = async (e) => {
     e.preventDefault();
+    this.setState({ isLoading: true }); // Ativa o estado de loading
     const totalAbastecimento = parseFloat(this.state.litros) * parseFloat(this.state.precoLitro);
-    // Adicione a lógica para enviar os dados ao banco de dados ou realizar outras ações
-    console.log('Dados do abastecimento:', {
+
+    // Objeto com dados para envio
+    const abastecimentoData = {
       ...this.state,
       totalAbastecimento,
-    });
+    };
+
+   /**  try {
+      // Chamada API para enviar os dados ao backend
+      const response = await axios.post('/api/abastecimentos', abastecimentoData);
+      if (response.status === 200) {
+        alert('Abastecimento registrado com sucesso!');
+      } else {
+        throw new Error('Erro ao registrar abastecimento.');
+      }
+    } catch (error) {
+      alert(error.message || 'Erro ao registrar abastecimento.');
+    } finally {
+      this.setState({ isLoading: false }); // Desativa o estado de loading independentemente do resultado
+    }
+    */
   };
 
+
   render() {
+    const { isLoading } = this.state;
+    
     return (
       <div>
-        <h2>Registrar Abastecimento</h2>
+        <h2>REGISTRAR ABASTECIMENTO</h2> 
+        {/* Formulário de registro de abastecimento */}
         <form onSubmit={this.handleSubmit}>
           <label>Data:</label>
           <input type="text" name="data" value={this.state.data} readOnly />
 
           <label>Placa do Caminhão:</label>
-          <input
-            type="text"
-            name="placa"
-            value={this.state.placa}
-            onChange={this.handleInputChange}
-            // Adicione lógica de pesquisa inteligente aqui
-          />
+          <input type="text" name="placa" value={this.state.placa} onChange={this.handleInputChange} />
 
           <label>Odômetro:</label>
           <input type="number" name="odometro" value={this.state.odometro} onChange={this.handleInputChange} />
@@ -76,7 +96,10 @@ class AbastecimentoForm extends Component {
           <label>Total Abastecimento:</label>
           <input type="text" name="totalAbastecimento" value={this.state.litros * this.state.precoLitro} readOnly />
 
-          <button type="submit">Registrar</button>
+          {/* Botão de envio do formulário */}
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? 'Enviando...' : 'Registrar'}
+          </button>
         </form>
       </div>
     );

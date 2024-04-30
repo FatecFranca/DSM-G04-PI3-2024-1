@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+//import axios from 'axios'; // Importe a biblioteca Axios
+import './registrarVeiculo.css';
 
 const RegistrarVeiculo = () => {
   // Estado para armazenar os dados do formulário
@@ -22,33 +24,47 @@ const RegistrarVeiculo = () => {
   };
 
   // Função para lidar com o envio do formulário
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Adicione aqui a lógica para enviar os dados ao servidor
-    console.log('Dados enviados:', formData);
+   
+   /* try {
+      // Envia os dados do formulário para o servidor
+      const response = await axios.post('/api/veiculos', formData);
+      console.log('Resposta do servidor:', response.data);
+      alert('Veículo registrado com sucesso!');
+      // Limpa o formulário após o envio bem-sucedido
+      setFormData({
+        marca: '',
+        modelo: '',
+        ano: '',
+        placa: '',
+        pbt: '',
+        capacidadeCarga: '',
+        tipoCarroceria: '',
+      });
+    } catch (error) {
+      console.error('Erro ao registrar veículo:', error);
+      alert('Erro ao registrar veículo. Por favor, tente novamente.');
+    }
+    */
   };
 
   return (
     <div>
-      <h2>Registrar de Veículo</h2>
+      <h2>Registrar Veículo</h2>
       <form onSubmit={handleSubmit}>
-        
         <label>Marca:</label>
         <select name="marca" value={formData.marca} onChange={handleChange} required>
           <option value="">Selecione...</option>
-         
           <option value="Toyota">Toyota</option>
           <option value="Honda">Honda</option>
-        
         </select>
 
         <label>Modelo:</label>
         <select name="modelo" value={formData.modelo} onChange={handleChange} required>
           <option value="">Selecione...</option>
-          
           <option value="8.150">Civic</option>
           <option value="Corolla">Corolla</option>
-          
         </select>
 
         <label>Ano:</label>

@@ -7,6 +7,7 @@ import RegistrarAbastecimento from './Components/RegistrarAbastecimento/Registra
 import RegistrarVeiculo from './Components/RegistrarVeiculo/RegistrarVeiculo.js';
 import Dashboard from './Components/Dashboard/Dashboard.js';
 import ListaAbastecimentos from './Components/ListaAbastecimentos/ListaAbastecimentos.js';
+import './index.css';
 import ReactDOM from 'react-dom';
 
 function App() {

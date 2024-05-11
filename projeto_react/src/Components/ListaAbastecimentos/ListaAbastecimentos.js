@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 class ListaAbastecimentos extends Component {
   constructor(props) {
     super(props);

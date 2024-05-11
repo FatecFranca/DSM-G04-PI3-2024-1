@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './Login';
-import SignUp from './SignUp';
-import ForgotPassword from './ForgotPassword';
-import RegistrarAbastecimento from './RegistrarAbastecimento';
-import RegistrarVeiculo from './RegistrarVeiculo';
-import Dashboard from './Dashboard';
-import ListaAbastecimentos from './ListaAbastecimentos';
+import Login from './Components/Login/Login.js';
+import SignUp from './Components/SignUp/SignUp.js';
+import ForgotPassword from './Components/ForgotPassWord/ForgotPassword.js';
+import RegistrarAbastecimento from './Components/RegistrarAbastecimento/RegistrarAbastecimento.js';
+import RegistrarVeiculo from './Components/RegistrarVeiculo/RegistrarVeiculo.js';
+import Dashboard from './Components/Dashboard/Dashboard.js';
+import ListaAbastecimentos from './Components/ListaAbastecimentos/ListaAbastecimentos.js';
+import './index.css';
 import ReactDOM from 'react-dom';
 
 function App() {

@@ -1,0 +1,62 @@
+.registrar-veiculo-container {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.registrar-veiculo-container label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.registrar-veiculo-container input,
+.registrar-veiculo-container select {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: rgba(255, 138, 0, 0.2);
+    color: #333;
+    cursor: pointer;
+}
+
+.registrar-veiculo-container input:hover,
+.registrar-veiculo-container select:hover {
+    background-color: rgba(255, 138, 0, 0.4);
+}
+
+.registrar-veiculo-container button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff8a00;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.registrar-veiculo-container button[type="submit"]:hover {
+    background-color: #ff6f00;
+}
+
+.registrar-veiculo-container input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+@media (max-width: 768px) {
+    .registrar-veiculo-container input,
+    .registrar-veiculo-container select {
+        width: 100%;
+    }
+  
+    .registrar-veiculo-container button[type="submit"] {
+        width: 100%;
+    }
+}

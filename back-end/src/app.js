@@ -23,6 +23,20 @@ app.use(cookieParser());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
+/***************************************************
+ * ROTAS
+***************************************************/
+
+import veiculoRouter from './routes/veiculo.js'
+app.use('/veiculo', veiculoRouter)
+
+import singupRouter from './routes/singup.js'
+app.use('/singup', singupRouter)
+
+import abastecimentoRouter from './routes/abastecimento.js'
+app.use('/abastecimento', abastecimentoRouter)
+
+
 export default app;
 
 

@@ -1,9 +1,12 @@
 import { Router } from "express";
-const router = Router();
+import controller from '../controllers/veiculo.js'
 
-/* GET home page. */
-router.get("/", function (req, res) {
-  res.send("Hello World!");
-});
+const router = Router()
 
-export default router;
+router.post('/', controller.create)
+router.get('/', controller.retrieveAll)
+router.get('/:id', controller.retrieveOne)
+router.put('/:id', controller.update)
+router.delete('/:id', controller.delete)
+
+export default router

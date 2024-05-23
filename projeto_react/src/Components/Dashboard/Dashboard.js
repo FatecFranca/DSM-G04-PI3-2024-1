@@ -4,17 +4,45 @@ import Chart from 'chart.js/auto';
 import './dashboard.css';
 
 // Componente para exibir o dashboard
-
 function Dashboard() {
   const navigate = useNavigate();
   const [period, setPeriod] = useState("ultimo_mes");
   const [filter, setFilter] = useState("litros_abastecidos");
+  const [selectedVehicles, setSelectedVehicles] = useState([]); // Estado para veículos selecionados
+  const [vehicles, setVehicles] = useState([]); // Estado para opções de veículos do banco de dados
   const [chartData, setChartData] = useState(null);
+  const [globalData, setGlobalData] = useState(null); // Estado para o dado global
   const chartRef = useRef(null);
 
   useEffect(() => {
+    // Busca a lista de veículos do banco de dados
+    const fetchVehicles = async () => {
+      const response = await fetch('/api/vehicles'); // Ajuste o endpoint da API conforme necessário
+      const data = await response.json();
+      setVehicles(data);
+    };
+
+    fetchVehicles();
+
     const fetchDataFromMongoDB = async () => {
-      // Lógica para buscar dados de um banco MongoDB com base nos estados de período e filtro
+      // Lógica para buscar dados do banco de dados com base nos estados de período, filtro e veículos selecionados
+      const response = await fetch(`/api/data?period=${period}&filter=${filter}&vehicles=${selectedVehicles.join(',')}`);
+      const data = await response.json();
+      
+      // Aqui você vai precisar processar 'data' para formatar para o chart.js
+      setChartData(data.chartData);
+
+      // Calcula e define o dado global
+      let globalValue = 0;
+      if (filter === 'litros_abastecidos') {
+        globalValue = data.globalData.reduce((acc, curr) => acc + curr.litros, 0);
+      } else if (filter === 'gasto_combustivel') {
+        globalValue = data.globalData.reduce((acc, curr) => acc + curr.custo, 0);
+      } else if (filter === 'media_veiculo') {
+        const totalMedia = data.globalData.reduce((acc, curr) => acc + curr.media, 0);
+        globalValue = totalMedia / data.globalData.length;
+      }
+      setGlobalData(globalValue);
     };
 
     fetchDataFromMongoDB();
@@ -41,7 +69,7 @@ function Dashboard() {
     if (chartData) {
       renderChart();
     }
-  }, [chartData]);
+  }, [period, filter, selectedVehicles, chartData]);
 
   const handlePeriodChange = (event) => {
     setPeriod(event.target.value);
@@ -49,6 +77,12 @@ function Dashboard() {
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
+  };
+
+  const handleVehicleChange = (event) => {
+    const options = Array.from(event.target.options);
+    const selectedValues = options.filter(option => option.selected).map(option => option.value);
+    setSelectedVehicles(selectedValues);
   };
 
   const handleOptionChange = (event) => {
@@ -76,6 +110,14 @@ function Dashboard() {
           <option value="media_veiculo">Qual foi a média do veículo</option>
         </select>
       </div>
+      <div className="dropdown">
+        <label>Escolha o(s) veículo(s):</label>
+        <select className="dropdown-select" onChange={handleVehicleChange} multiple>
+          {vehicles.map(vehicle => (
+            <option key={vehicle.plate} value={vehicle.plate}>{vehicle.plate}</option>
+          ))}
+        </select>
+      </div>
       <canvas id="myChart"></canvas>
       <div className="EscolhaUmaOpcao">
         <select className="dropdown-select" onChange={handleOptionChange}>
@@ -84,6 +126,12 @@ function Dashboard() {
           <option value="/registarveiculo">Registrar Veiculo</option>
           <option value="/listaabastecimentos">Lista Abastecimentos</option>
         </select>
+      </div>
+      <div className="global-data">
+        <h3>Dado Global:</h3>
+        {globalData !== null && (
+          <p>{globalData}</p>
+        )}
       </div>
     </div>
   );

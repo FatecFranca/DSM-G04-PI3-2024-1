@@ -1,3 +1,8 @@
+import dotenv from 'dotenv'
+// Carrega as variáveis do arquivo .env
+// no objeto global process.env
+dotenv.config()
+
 import express, { json, urlencoded } from "express";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
@@ -7,6 +12,9 @@ import usersRouter from "./routes/users.js";
 
 const app = express();
 
+import mongoose from 'mongoose'
+mongoose.connect(process.env.DATABASE_URL)
+
 app.use(logger("dev"));
 app.use(json());
 app.use(urlencoded({ extended: false }));
@@ -15,4 +23,20 @@ app.use(cookieParser());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
+/***************************************************
+ * ROTAS
+***************************************************/
+
+import veiculoRouter from './routes/veiculo.js'
+app.use('/veiculo', veiculoRouter)
+
+import singupRouter from './routes/singup.js'
+app.use('/singup', singupRouter)
+
+import abastecimentoRouter from './routes/abastecimento.js'
+app.use('/abastecimento', abastecimentoRouter)
+
+
 export default app;
+
+

@@ -8,13 +8,13 @@ Esta é uma aplicação CRUD completa para gerenciar veículos, desenvolvida com
 Product Owner: KEVIN DE ALMEIDA BRANDAO    
 https://github.com/KevinBrandao
 
-Designer: IGOR OWEN SILVA DE PAULA
+Designer: IGOR OWEN SILVA DE PAULA  
 https://github.com/IgoROweN
 
-Front-End: CRISTIAN TULIO GARCIA DO NASCIMENTO  
+Front-End: CRISTIAN TULIO GARCIA DO NASCIMENTO    
 https://github.com/cristianfatec
 
-Back-End:  SAMIR LOPES ROSA
+Back-End:  SAMIR LOPES ROSA  
 https://github.com/SamLope
 
 ### Intalaçao do React

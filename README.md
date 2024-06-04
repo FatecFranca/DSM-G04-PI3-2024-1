@@ -5,7 +5,7 @@ Repositório do GRUPO 04 do Projeto Interdisciplinar do 3º semestre DSM 2024/1.
 Esta é uma aplicação CRUD completa para gerenciar veículos, desenvolvida com React e Node.js, utilizando MongoDB como banco de dados. A aplicação permite listar, criar, atualizar e deletar manutenções realizadas em veículos.
 
 # Alunos: 
-## Product Owner: KEVIN DE ALMEIDA BRANDAO    
+Product Owner: KEVIN DE ALMEIDA BRANDAO    
 https://github.com/KevinBrandao
 
 ## Designer: IGOR OWEN SILVA DE PAULA

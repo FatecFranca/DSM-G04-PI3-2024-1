@@ -1,4 +1,4 @@
-import SingUp from '../models/SingUp.js';
+import SingUp from '../models/usuarioModel.js';
 
 const controller = {};
 

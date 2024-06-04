@@ -1,86 +1,31 @@
-#!/usr/bin/env node
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import abastecimentosRouter from '../routes/abastecimentosRouter.js';
+import signupRouter from '../routes/usuarioRouter.js'; // Importe a rota signupRouter aqui
 
-/**
- * Module dependencies.
- */
+dotenv.config();
 
-import app from "../app.js";
-import chalk from "chalk";
-import { createServer } from "http";
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-/**
- * Get port from environment and store in Express.
- */
+app.use(cors());
+app.use(express.json());
 
-const port = normalizePort(process.env.PORT || "8080");
-app.set("port", port);
+mongoose.connect('mongodb://localhost:27017/abastecimento', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB connected'))
+.catch((err) => console.log(err));
 
-/**
- * Create HTTP server.
- */
+// // Use as rotas de abastecimento
+app.use('/api/abastecimentos', abastecimentosRouter);
 
-const server = createServer(app);
+// // Use as rotas de signup
+app.use('/api/signup', signupRouter);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on("error", onError);
-server.on("listening", onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-  let port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
-
-/**
- * Event listener for HTTP server "error" event.
- */
-
-function onError(error) {
-  if (error.syscall !== "listen") {
-    throw error;
-  }
-
-  let bind = typeof port === "string" ? `Pipe ${port}` : `Port ${port}`;
-
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case "EACCES":
-      console.error(`${bind} requires elevated privileges.`);
-      process.exit(1);
-      break;
-    case "EADDRINUSE":
-      console.error(`${bind} is already in use.`);
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
-
-/**
- * Event listener for HTTP server "listening" event.
- */
-
-function onListening() {
-  let addr = server.address();
-  let bind = typeof addr === "string" ? `pipe  ${addr}` : `port ${addr.port}`;
-  console.log(chalk.cyan(`Listening on ${bind}.`));
-}
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});

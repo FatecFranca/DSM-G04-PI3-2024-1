@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-//import axios from 'axios'; // Incluído para fazer requisições HTTP
+//import axios from 'axios'; 
+// Incluído para fazer requisições HTTP
 
 class AbastecimentoForm extends Component {
   constructor(props) {

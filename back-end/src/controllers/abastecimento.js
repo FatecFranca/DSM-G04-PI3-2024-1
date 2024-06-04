@@ -1,4 +1,4 @@
-import Abastecimento from '../models/Abastecimento.js';
+import Abastecimento from '../models/abastecimento.js';
 
 const controller = {};
 

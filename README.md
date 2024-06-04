@@ -18,13 +18,13 @@ Back-End:  SAMIR LOPES ROSA
 https://github.com/SamLope
 
 ### Intalaçao do React
-npx create-react-app nome_do_projeto
-npm start
+npx create-react-app nome_do_projeto  
+npm start  
 
 ### Intalaçao do Node
-https://nodejs.org/en/download/source-code
+https://nodejs.org/en/download/source-code  
 npm run dev
 
 ### Deployment
 
-### Documentação Final
+## Documentação Final

@@ -1,5 +1,5 @@
 import express from 'express';
-import Veiculo from '../models/veiculoModel.js.js';
+import veiculoModel from '../models/veiculoModel.js';
 
 const router = express.Router();
 

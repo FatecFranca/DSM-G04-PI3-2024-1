@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import abastecimentosRouter from '../routes/abastecimentosRouter.js';
 import signupRouter from '../routes/usuarioRouter.js'; // Importe a rota signupRouter aqui
+import veiculoRouter from '../routes/veiculoRouter.js';
 
 dotenv.config();
 
@@ -25,6 +26,9 @@ app.use('/api/abastecimentos', abastecimentosRouter);
 
 // // Use as rotas de signup
 app.use('/api/signup', signupRouter);
+
+// Use as rotas de veiculorouter
+app.use('/api/veiculos', veiculoRouter);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);

@@ -27,15 +27,14 @@ app.use("/users", usersRouter);
  * ROTAS
 ***************************************************/
 
-import veiculoRouter from './routes/veiculo.js'
-app.use('/veiculo', veiculoRouter)
-
 import singupRouter from './routes/singup.js'
 app.use('/singup', singupRouter)
 
 import abastecimentoRouter from './routes/abastecimento.js'
 app.use('/abastecimento', abastecimentoRouter)
 
+import veiculoRouter from './routes/veiculoRouter.js'
+app.use('/veiculos', veiculoRouter)
 
 export default app;
 

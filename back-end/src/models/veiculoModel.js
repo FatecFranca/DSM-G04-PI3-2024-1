@@ -10,6 +10,6 @@ const veiculoSchema = new mongoose.Schema({
   tipoCarroceria: { type: String, required: true },
 });
 
-const Veiculo = mongoose.model('Veiculo', veiculoSchema);
+const veiculo = mongoose.model('veiculo', veiculoSchema, 'veiculos');
 
-export default Veiculo;
+export default veiculo;

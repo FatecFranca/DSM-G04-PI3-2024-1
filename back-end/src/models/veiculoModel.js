@@ -1,3 +1,5 @@
+// src/models/veiculoModel.js
+
 import mongoose from 'mongoose';
 
 const veiculoSchema = new mongoose.Schema({
@@ -5,11 +7,12 @@ const veiculoSchema = new mongoose.Schema({
   modelo: { type: String, required: true },
   ano: { type: Number, required: true },
   placa: { type: String, required: true, unique: true },
-  pbt: { type: Number, required: true },
-  capacidadeCarga: { type: Number, required: true },
-  tipoCarroceria: { type: String, required: true },
+  cor: { type: String, required: true },
+  tipo: { type: String, required: true }
+}, {
+  timestamps: true
 });
 
-const veiculo = mongoose.model('veiculo', veiculoSchema, 'veiculos');
+const Veiculo = mongoose.model('Veiculo', veiculoSchema);
 
-export default veiculo;
+export default Veiculo;

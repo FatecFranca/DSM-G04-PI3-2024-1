@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const signupSchema = new mongoose.Schema({
+const usuarioSchema = new mongoose.Schema({
   nomeCompleto: { type: String, required: true },
   cpf: { type: String, required: true, unique: true },
   endereco: { type: String, required: true },
@@ -10,6 +10,6 @@ const signupSchema = new mongoose.Schema({
   senha: { type: String, required: true }
 });
 
-const SignUp = mongoose.model('SignUp', signupSchema);
+const Usuario = mongoose.model('Usuario', usuarioSchema);
 
-export default SignUp;
+export default Usuario;

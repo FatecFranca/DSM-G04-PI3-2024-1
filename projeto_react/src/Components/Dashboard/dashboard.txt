@@ -1,0 +1,28 @@
+Funcionamento página dashboard.
+A página será o objetivo central da aplicação.
+Nela o usuario conseguira compilar as informações coletadas na aplicação.
+
+A página apresenta, uma tabela com as seguintes informações historicas (desde o primeiro
+registro no banco de dados):
+
+Colunas: Placa (Todos os veiculos cadastrados no banco de dados, aqui representados somente pela placa)
+         Quantidade (Soma de litros abastecimentos registrados)
+         Média (Soma Qtde lts abastecidos/(Primeiro valor odometro registrado - Ultimo valor odometro registrado)) 
+         Valor (Soma valores abastecimentos registrados)
+
+
+Funções:
+Função: Filtrar por periodo
+O usuario pode escolhe de qual período deseja obter a informações compilada,
+selecionando uma data  no campo "escolha o período"- campo deve ser do tipo "De...Até..."
+
+Resultado- A tabela mostrara as mesmas informaçõe, mas somente do periodo desejado
+
+Como se trata da pagina principal ela sera a porta de entrada para outras paginas atraves de botões na lateral
+pagina, poderemos acessar:
+1- Registrar abastecimento 
+Caminho: C:\Users\Usuario\Desktop\ControLog\DSM-G04-PI3-2024-1\projeto_react\src\Components\RegistrarAbastecimento\RegistrarAbastecimento.js
+2- Registrar Veiculo
+Caminho: C:\Users\Usuario\Desktop\ControLog\DSM-G04-PI3-2024-1\projeto_react\src\Components\RegistrarVeiculo\RegistrarVeiculo.js
+
+

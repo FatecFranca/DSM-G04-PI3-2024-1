@@ -1,9 +1,11 @@
+// src/bin/server.js
+
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import abastecimentosRouter from '../routes/abastecimentosRouter.js';
-import signupRouter from '../routes/usuarioRouter.js'; // Importe a rota signupRouter aqui
+import abastecimentoRouter from '../routes/abastecimentoRouter.js';
+import usuarioRouter from '../routes/usuarioRouter.js';
 import veiculoRouter from '../routes/veiculoRouter.js';
 
 dotenv.config();
@@ -14,20 +16,20 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/abastecimento', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/abastecimento', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB connected'))
-.catch((err) => console.log(err));
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.log(err));
 
-// // Use as rotas de abastecimento
-app.use('/api/abastecimentos', abastecimentosRouter);
+// Use as rotas de abastecimento
+app.use('/api/abastecimentos', abastecimentoRouter);
 
-// // Use as rotas de signup
-app.use('/api/signup', signupRouter);
+// Use as rotas de usuários
+app.use('/api/usuarios', usuarioRouter);
 
-// Use as rotas de veiculorouter
+// Use as rotas de veículos
 app.use('/api/veiculos', veiculoRouter);
 
 app.listen(PORT, () => {

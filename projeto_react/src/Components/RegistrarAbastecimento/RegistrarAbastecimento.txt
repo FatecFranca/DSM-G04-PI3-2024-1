@@ -1,0 +1,52 @@
+Função: A página registrar abastecimento como o nome diz é a página responsável por registrar um abastecimento
+
+Para isso o usuário deve fornecer as seguintes informações:
+
+    1- Data
+        Descrição: A data que o abastecimento foi realizado
+        Tipo: Data
+
+    2- Placa caminhão
+        Descrição: Identificação do veículo que foi abastecido 
+        Tipo: String
+
+    3- ôdometro
+        Descrição: Kilometragem que o ôdometro do veiculo marca no momento do abastecimento
+        Tipo: Real
+
+    4- Litros
+        Quantos litros foram abastecidos
+        Tipo: Real
+
+    5- Preço Litros
+        Descrição: Qual o preço do litro do combustivel abastecido
+        Tipo: Real
+
+    6- Tipo de combustível
+        Descrição:Tipo do combustivel abastecido .
+        Aplicação deve: Apresentar uma lista suspensa de opções: Diesel, alcool e gasolina.
+        Tipo: String.
+
+    7- Posto
+        Descrição: Nome do posto em que o abastecimento foi realizado.
+        Tipo: String
+
+    8- Total abastecimento
+        Descrição: Valor total do abastecimento realizado.
+        Aplicação deve: Automaticamente conforme o usuario digitar multiplicar '4- Litros' por '5- Preço Litros'
+    e mostrar nesse campo o total.
+        Tipo: Real.
+
+A aplicação não deve aceitar nenhum valor nulo.
+Após completo o formulário o usuário pode submeter através do botão registar.
+Quando o usuário apertar o botão registrar a aplicação deve enviar as informações para o banco de dados.
+
+Arquivos do BD relacionados a esse front:   
+    1- server.js
+    C:\Users\Usuario\Desktop\ControLog\DSM-G04-PI3-2024-1\back-end\src\bin\server.js
+    2- abastecimentoRouter.js
+    C:\Users\Usuario\Desktop\ControLog\DSM-G04-PI3-2024-1\back-end\src\controllers\abastecimentoController.js
+    3- abastecimentoModel.js
+    C:\Users\Usuario\Desktop\ControLog\DSM-G04-PI3-2024-1\back-end\src\models\abastecimentoModel.js
+    4- abastecimentoController.js
+    C:\Users\Usuario\Desktop\ControLog\DSM-G04-PI3-2024-1\back-end\src\routes\abastecimentoRouter.js

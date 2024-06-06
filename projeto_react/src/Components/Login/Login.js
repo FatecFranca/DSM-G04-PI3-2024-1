@@ -21,20 +21,18 @@ function Login() {
         <input type="password" name="password" required />
 
         <div>
-         <Link to="/dashboard">
+          <Link to="/dashboard">
             <button>Login</button>
-         </Link>
+          </Link>
         </div>
-      
       </form>
 
       <div className="forgotPassord-Signup">
         <Link to="/forgot-password">Esqueceu sua senha?</Link>
       </div>
       <div className="forgotPassord-Signup">
-        <Link to="/signup">Cadastrar-se</Link>
+        <Link to="/cadastrarse">Cadastrar-se</Link> {/* Corrigir o link para a rota de cadastro */}
       </div>
-    
     </div>
   );
 }

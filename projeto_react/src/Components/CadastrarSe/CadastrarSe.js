@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const CadastrarSe = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,10 @@ const CadastrarSe = () => {
     senha: '',
   });
 
+  const [message, setMessage] = useState(''); // Estado para armazenar as mensagens
+  const [error, setError] = useState(''); // Estado para armazenar as mensagens de erro
+  const navigate = useNavigate(); // Hook para navegação
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -22,23 +27,33 @@ const CadastrarSe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form data:', formData); // Adicionado para depuração
+    setError('');
+    setMessage('');
     try {
-      const response = await axios.post('http://localhost:3001/api/usuarios', formData);
+      const response = await axios.post('http://localhost:3000/api/usuarios', formData);
+      setMessage('Usuário cadastrado com sucesso!');
       console.log('Usuário cadastrado:', response.data);
-      // Adicione lógica para redirecionar ou mostrar mensagem de sucesso
+
+      // Redirecionar para o dashboard após um breve atraso para permitir que o usuário veja a mensagem de sucesso
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 2000); // Redireciona após 2 segundos
     } catch (error) {
       console.error('Erro ao cadastrar usuário:', error);
       if (error.response) {
-        console.error('Erro do servidor:', error.response.data); // Adicionado para depuração
+        setError(error.response.data.error);
+        console.error('Erro do servidor:', error.response.data);
+      } else {
+        setError('Erro ao cadastrar usuário. Por favor, tente novamente.');
       }
-      // Adicione lógica para mostrar mensagem de erro
     }
   };
 
   return (
     <div>
       <h2>Cadastrar-se</h2>
+      {message && <p style={{ color: 'green' }}>{message}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>Nome Completo:</label>
         <input type="text" name="nomeCompleto" value={formData.nomeCompleto} onChange={handleChange} maxLength={200} required />

@@ -19,7 +19,13 @@ export const createUsuario = async (req, res) => {
     await novoUsuario.save();
     res.status(201).json(novoUsuario);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    if (error.code === 11000) {
+      // Erro de duplicidade de chave
+      const duplicatedField = Object.keys(error.keyPattern)[0];
+      res.status(400).json({ error: `${duplicatedField} já existe.` });
+    } else {
+      res.status(400).json({ error: error.message });
+    }; 
   }
 };
 

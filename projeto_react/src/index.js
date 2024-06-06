@@ -7,7 +7,7 @@ import RegistrarVeiculo from './Components/RegistrarVeiculo/RegistrarVeiculo.js'
 import Dashboard from './Components/Dashboard/Dashboard.js';
 import CadastrarSe from './Components/CadastrarSe/CadastrarSe.js'; 
 import './index.css';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 function App() {
   return (
@@ -24,4 +24,6 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App />);

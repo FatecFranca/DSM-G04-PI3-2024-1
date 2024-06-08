@@ -4,7 +4,7 @@ import Veiculo from '../models/veiculoModel.js';
 
 export const createVeiculo = async (req, res) => {
   try {
-    const { marca, modelo, ano, placa, cor, tipo } = req.body;
+    const { marca, modelo, ano, placa, cor, tipoCarroceria, pbt, capacidadeCarga} = req.body;
 
     const novoVeiculo = new Veiculo({
       marca,
@@ -12,7 +12,9 @@ export const createVeiculo = async (req, res) => {
       ano,
       placa,
       cor,
-      tipo
+      tipoCarroceria,
+      pbt,
+      capacidadeCarga
     });
 
     await novoVeiculo.save();
@@ -52,7 +54,9 @@ export const updateVeiculo = async (req, res) => {
       ano,
       placa,
       cor,
-      tipo
+      tipoCarroceria,
+      pbt,
+      capacidadeCarga
     };
     const veiculo = await Veiculo.findByIdAndUpdate(req.params.id, veiculoAtualizado, { new: true });
     if (!veiculo) {
@@ -75,3 +79,4 @@ export const deleteVeiculo = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+

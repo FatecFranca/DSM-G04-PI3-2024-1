@@ -6,7 +6,7 @@ import RegistrarAbastecimento from './Components/RegistrarAbastecimento/Registra
 import RegistrarVeiculo from './Components/RegistrarVeiculo/RegistrarVeiculo.js';
 import Dashboard from './Components/Dashboard/Dashboard.js';
 import CadastrarSe from './Components/CadastrarSe/CadastrarSe.js'; 
-import './index.css';
+// import './index.css';
 import { createRoot } from 'react-dom/client';
 
 function App() {

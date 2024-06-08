@@ -1,46 +1,74 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import './dashboard.css';
+import { useNavigate } from 'react-router-dom';
 
-function Dashboard() {
-  const navigate = useNavigate();
-  const [periodStart, setPeriodStart] = useState('');
-  const [periodEnd, setPeriodEnd] = useState('');
+const Dashboard = () => {
   const [data, setData] = useState([]);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const navigate = useNavigate();
+
+  const fetchData = useCallback(async () => {
+    try {
+      const formattedStartDate = formatDate(startDate);
+      const formattedEndDate = formatDate(endDate);
+
+      console.log('Fetching data with dates:', { startDate: formattedStartDate, endDate: formattedEndDate });
+
+      const response = await axios.get('http://localhost:3000/api/abastecimentos', {
+        params: {
+          startDate: formattedStartDate,
+          endDate: formattedEndDate,
+        },
+      });
+      setData(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }, [startDate, endDate]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`/api/abastecimentos?start=${periodStart}&end=${periodEnd}`);
-      setData(response.data);
-    } catch (error) {
-      console.error('Erro ao buscar dados de abastecimento:', error);
-    }
-  };
-
-  const handlePeriodSubmit = (event) => {
-    event.preventDefault();
+  const handleFilter = (e) => {
+    e.preventDefault();
     fetchData();
   };
 
-  const handleOptionChange = (event) => {
-    const path = event.target.value;
-    if (path) {
-      navigate(path);
-    }
+  const navigateTo = (path) => {
+    navigate(path);
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard">
       <h1>Dashboard</h1>
-      <form onSubmit={handlePeriodSubmit}>
-        <label>Escolha o período:</label>
-        <input type="date" value={periodStart} onChange={(e) => setPeriodStart(e.target.value)} />
-        <input type="date" value={periodEnd} onChange={(e) => setPeriodEnd(e.target.value)} />
+      <form onSubmit={handleFilter}>
+        <label>
+          De:
+          <input
+            type="date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+        </label>
+        <label>
+          Até:
+          <input
+            type="date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+        </label>
         <button type="submit">Filtrar</button>
       </form>
       <table>
@@ -53,25 +81,22 @@ function Dashboard() {
           </tr>
         </thead>
         <tbody>
-          {data.map(item => (
-            <tr key={item.placa}>
+          {data.map((item, index) => (
+            <tr key={`${item.placa}-${item.data}-${index}`}>
               <td>{item.placa}</td>
-              <td>{item.quantidade}</td>
-              <td>{item.media}</td>
-              <td>{item.valor}</td>
+              <td>{item.litros}</td>
+              <td>{item.odometro}</td>
+              <td>{item.totalAbastecimento}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="escolha-uma-opcao">
-        <select className="dropdown-select" onChange={handleOptionChange}>
-          <option value="">Escolha uma opção</option>
-          <option value="/registrarabastecimento">Registrar Abastecimento</option>
-          <option value="/registarveiculo">Registrar Veículo</option>
-        </select>
+      <div className="sidebar">
+        <button onClick={() => navigateTo('/registrarabastecimento')}>Registrar Abastecimento</button>
+        <button onClick={() => { navigateTo('/registrarveiculo'); }}>Registrar Veículo</button>
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;

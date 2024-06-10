@@ -22,7 +22,7 @@ function Login() {
 
         <div>
           <Link to="/dashboard">
-            <button>Login</button>
+            <button>Entrar</button>
           </Link>
         </div>
       </form>

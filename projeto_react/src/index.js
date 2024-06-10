@@ -1,13 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './Components/Login/Login.js';
+import { createRoot } from 'react-dom/client';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import CadastrarSe from './Components/CadastrarSe/CadastrarSe.js';
+import Dashboard from './Components/Dashboard/Dashboard.js';
 import ForgotPassword from './Components/ForgotPassWord/ForgotPassword.js';
+import Login from './Components/Login/Login.js';
 import RegistrarAbastecimento from './Components/RegistrarAbastecimento/RegistrarAbastecimento.js';
 import RegistrarVeiculo from './Components/RegistrarVeiculo/RegistrarVeiculo.js';
-import Dashboard from './Components/Dashboard/Dashboard.js';
-import CadastrarSe from './Components/CadastrarSe/CadastrarSe.js'; 
-// import './index.css';
-import { createRoot } from 'react-dom/client';
+import './index.css';
 
 function App() {
   return (

@@ -7,7 +7,7 @@ import ForgotPassword from './Components/ForgotPassWord/ForgotPassword.js';
 import Login from './Components/Login/Login.js';
 import RegistrarAbastecimento from './Components/RegistrarAbastecimento/RegistrarAbastecimento.js';
 import RegistrarVeiculo from './Components/RegistrarVeiculo/RegistrarVeiculo.js';
-import './index.css';
+// import './index.css';
 
 function App() {
   return (

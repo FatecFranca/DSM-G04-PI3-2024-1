@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './dashboard.css';
+// import './dashboard.css';
 
 const Dashboard = () => {
   const [data, setData] = useState([]);

@@ -1,6 +1,6 @@
 // src/components/ForgotPassword.js
 import React from 'react';
-
+import './forgotPassword.css'
 function ForgotPassword() {
   // Função chamada ao enviar o formulário de recuperação de senha
   const handleForgotPassword = (e) => {

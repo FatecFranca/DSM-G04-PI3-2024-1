@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './registrarAbastecimento.css'
 
 // Configuração global do axios para usar o backend na porta 3000
 const api = axios.create({
@@ -80,7 +81,6 @@ class RegistrarAbastecimento extends Component {
 
     return (
       <div>
-        <h2>REGISTRAR ABASTECIMENTO</h2>
         <form onSubmit={this.handleSubmit}>
           <label>Data:</label>
           <input type="date" name="data" value={this.state.data} onChange={this.handleInputChange} />

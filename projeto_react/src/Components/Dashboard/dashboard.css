@@ -1,178 +1,174 @@
-/* Reset padrão de margens e preenchimento */
 body, h1, h2, p, input, select {
-    font-family: 'Arial Narrow Bold', sans-serif; /* Fonte padrão */
-    margin: 0; /* Removendo margem padrão */
-    padding: 0; /* Removendo preenchimento padrão */
-  }
-  
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #333;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #F5F5F5;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  background-color: #fff;
+  border: 1px solid #F29325;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+form > label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.filtro-btn {
+  background-color: #F29325;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtro-btn:hover {
+  background-color: #007172;
+  transform: translateY(-2px);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+thead {
+  background-color: #F29325;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #F5F5F5;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar button {
+  width: 150px;
+  border-radius: 30px;
+  background-color: #F29325;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar button:hover {
+  background-color: #D94F04;
+}
+
+div {
+  text-align: center;
+}
+
+div a {
+  color: #F29325;
+  text-decoration: none;
+}
+
+div a:hover {
+  text-decoration: underline;
+  color: #007172;
+}
+
+@media (max-width: 600px) {
   h1, h2 {
-    margin-bottom: 30px; /* Espaçamento inferior */
-    font-size: 2.5rem; /* Tamanho da fonte */
-    text-align: center; /* Centralizando o texto */
-    color: #333; /* Cor do texto */
-  }
-  
-  body {
-    display: flex; /* Usando flexbox para layout */
-    flex-direction: column; /* Disposição em coluna */
-    align-items: center; /* Centralizando itens horizontalmente */
-    min-height: 100vh; /* Altura mínima */
-    background-color: #f7f7f7; /* Cor de fundo */
-    padding: 20px; /* Preenchimento interno */
-    box-sizing: border-box; /* Inclui padding e border no tamanho total */
-  }
-  
-  .dashboard {
-    width: 100%; /* Largura total */
-    max-width: 1200px; /* Largura máxima */
-    display: flex; /* Usando flexbox */
-    flex-direction: column; /* Disposição em coluna */
-    align-items: center; /* Centralizando itens horizontalmente */
-  }
-  
-  form {
-    background-color: #fff; /* Cor de fundo */
-    border: 1px solid #ff9800; /* Borda */
-    border-radius: 10px; /* Bordas arredondadas */
-    padding: 20px; /* Preenchimento interno */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-    max-width: 1000px; /* Largura máxima */
-    width: 100%; /* Largura total */
-    text-align: center; /* Centralizando texto */
-    margin-bottom: 20px; /* Espaçamento inferior */
-    display: flex; /* Usando flexbox */
-    justify-content: space-between; /* Espaçando itens */
-    gap: 40px; /* Espaçamento entre os itens */
-  }
-  
-  form > label {
-    flex: 1; /* Cada label ocupa a mesma quantidade de espaço */
-    display: flex; /* Usando flexbox */
-    flex-direction: column; /* Disposição em coluna */
-    align-items: center; /* Centralizando itens horizontalmente */
-  }
-  
-  input[type="date"] {
-    width: 100%; /* Largura total */
-    padding: 10px; /* Preenchimento interno */
-    border: 1px solid #ccc; /* Borda */
-    border-radius: 5px; /* Bordas arredondadas */
-    font-size: 1rem; /* Tamanho da fonte */
-  }
-  
-  .filtro-btn:hover {
-    background-color: #0077e6;
-    transform: translateY(-2px);
-  }
-  
-  .filtro-btn:hover {
-    background-color: #0077e6;
-    transform: translateY(-2px);
+    font-size: 2rem;
   }
 
-  
   button {
-    background-color: #ff9800;
-    color: white;
-    border: none;
-    border-radius: 50%; /* Faz o botão ficar circular */
-    padding: 15px; /* Ajusta o padding para que o botão fique maior */
-    width: 60px; /* Define a largura do botão */
-    height: 60px; /* Define a altura do botão */
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    align-self: center; /* Centralizando o botão */
-    display: flex;
-    align-items: center;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  form {
+    padding: 15px;
+    flex-direction: column;
+  }
+
+  input[type="date"] {
+    padding: 8px;
+  }
+
+  .sidebar {
+    position: static;
+    flex-direction: row;
     justify-content: center;
   }
-  
-  
-  button:hover {
-    background-color: #0077e6; /* Cor de fundo ao passar o mouse */
-    transform: translateY(-2px); /* Movimentação ao passar o mouse */
-  }
-  
-  table {
-    width: 100%; /* Largura total */
-    border-collapse: collapse; /* Removendo espaço entre células */
-    margin-bottom: 20px; /* Espaçamento inferior */
-  }
-  
-  thead {
-    background-color: #ff9800; /* Cor de fundo do cabeçalho */
-    color: white; /* Cor do texto do cabeçalho */
-  }
-  
-  th, td {
-    padding: 10px; /* Preenchimento interno */
-    border: 1px solid #ccc; /* Borda */
-    text-align: center; /* Centralizando texto */
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #f7f7f7; /* Cor de fundo para linhas pares */
-  }
-  
-  .sidebar {
-    position: fixed; /* Fixa a posição */
-    left: 0; /* Alinha à esquerda */
-    top: 50%; /* Alinha ao centro verticalmente */
-    transform: translateY(-50%); /* Centraliza verticalmente */
-    display: flex; /* Usando flexbox */
-    flex-direction: column; /* Disposição em coluna */
-    gap: 20px; /* Espaçamento entre os itens */
-  }
-  
+
   .sidebar button {
-    width: 150px; /* Largura dos botões */
-    border-radius: 30px; /* Bordas arredondadas */
+    width: auto;
+    border-radius: 5px;
   }
-  
-  div {
-    text-align: center; /* Centralizando texto */
-  }
-  
-  div a {
-    color: #ff9800; /* Cor do texto do link */
-    text-decoration: none; /* Sem sublinhado */
-  }
-  
-  div a:hover {
-    text-decoration: underline; /* Sublinhado ao passar o mouse */
-    color: #0077e6; /* Cor ao passar o mouse */
-  }
-  
-  @media (max-width: 600px) {
-    h1, h2 {
-      font-size: 2rem; /* Tamanho da fonte menor */
-    }
-  
-    button {
-      padding: 10px 20px; /* Preenchimento menor */
-      font-size: 0.9rem; /* Tamanho da fonte menor */
-    }
-  
-    form {
-      padding: 15px; /* Preenchimento interno menor */
-      flex-direction: column; /* Disposição em coluna */
-    }
-  
-    input[type="date"] {
-      padding: 8px; /* Preenchimento menor */
-    }
-  
-    .sidebar {
-      position: static; /* Posição padrão */
-      flex-direction: row; /* Disposição em linha */
-      justify-content: center; /* Centralizando itens */
-    }
-  
-    .sidebar button {
-      width: auto; /* Largura automática */
-      border-radius: 5px; /* Bordas menos arredondadas */
-    }
-    
-  }
-  
+}

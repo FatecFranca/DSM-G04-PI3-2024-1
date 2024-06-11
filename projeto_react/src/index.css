@@ -100,3 +100,34 @@ div a:hover {
       padding: 8px;
   }
 }
+
+
+.dashboard {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+thead {
+  background-color: #F29325;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #F5F5F5;
+}

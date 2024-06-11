@@ -94,8 +94,8 @@ const Dashboard = () => {
         </tbody>
       </table>
       <div className="sidebar">
-        <button onClick={() => navigateTo('/registrarabastecimento')}>Registrar Abastecimento</button>
         <button onClick={() => { navigateTo('/registrarveiculo'); }}>Registrar Veículo</button>
+        <button onClick={() => navigateTo('/registrarabastecimento')}>Registro Abasteci</button>
       </div>
     </div>
   );

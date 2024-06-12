@@ -102,15 +102,6 @@ div a:hover {
 }
 
 
-.dashboard {
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -128,6 +119,34 @@ th, td {
   text-align: center;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #F5F5F5;
+.filtro-btn {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 50%; /* Faz o botão ficar circular */
+  padding: 50px; /* Ajusta o padding para que o botão fique maior */
+  width: 60px; /* Define a largura do botão */
+  height: 60px; /* Define a altura do botão */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  align-self: center; /* Centralizando o botão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar {
+  position: fixed; /* Fixa a posição */
+  left: 0; /* Alinha à esquerda */
+  top: 50%; /* Alinha ao centro verticalmente */
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  display: flex; /* Usando flexbox */
+  flex-direction: column; /* Disposição em coluna */
+  gap: 20px; /* Espaçamento entre os itens */
+}
+
+.sidebar button {
+  width: 450px; /* Largura dos botões */
+  border-radius: 10px; /* Bordas arredondadas */
 }
